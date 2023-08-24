@@ -1,14 +1,14 @@
 // const axios = require("axios");
-const server = require("./src/server");
+const server = require("./src/app");
 const { conn } = require("./src/db.js");
 const PORT = 3001;
-const allInfo = require("./loaders/infoApi");
+const infoApi = require("./loaders/infoApi");
 
 conn
   .sync({ force: true })
   .then(() => {
-    server.listen(PORT, () => {
-      allInfo();
+    server.listen(PORT, async () => {
+      await infoApi();
       console.log(`Server listening on port ${PORT}`);
     });
   })
