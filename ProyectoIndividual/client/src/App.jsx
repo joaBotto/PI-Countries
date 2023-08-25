@@ -1,15 +1,22 @@
 import "./App.css";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Welcome from "./components/landing/landing";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Landing from "./components/landing/landing";
 import Home from "./components/home/home";
+import Detail from "./components/detail/detail";
+import Form from "./components/form/form";
+import Countries from "./components/countries/countries";
+import SearchBar from "./components/searchBar/searchbar";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Welcome />}></Route>
+        <Route exact path="/" element={<Landing />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/detail" element={<Detail />}></Route>
+        <Route path="/form" element={<Form />}></Route>
+        <Route path="/searchbar" element={<SearchBar />}></Route>
       </Routes>
     </>
   );
