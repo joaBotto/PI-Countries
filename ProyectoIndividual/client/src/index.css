@@ -16,12 +16,10 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-size: cover;
   background-image: url("./assets/countries2.jpeg");
-  /* background-image: url("./components/landing/earthanimation.jpg"); */
 }
 
 h1 {

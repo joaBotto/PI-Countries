@@ -6,17 +6,19 @@ import Home from "./components/home/home";
 import Detail from "./components/detail/detail";
 import Form from "./components/form/form";
 import Countries from "./components/countries/countries";
+import Nav from "./components/nav/nav";
 import SearchBar from "./components/searchBar/searchbar";
 
 function App() {
+  const location = useLocation();
   return (
     <>
+      {/* {location.pathname !== "/" && <Nav />} */}
       <Routes>
         <Route exact path="/" element={<Landing />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/detail" element={<Detail />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="/form" element={<Form />}></Route>
-        <Route path="/searchbar" element={<SearchBar />}></Route>
       </Routes>
     </>
   );

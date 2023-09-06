@@ -1,0 +1,35 @@
+.nav-container {
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.nav-button {
+  color: rgb(0, 0, 0);
+  border: 0;
+  border-radius: 3px;
+  background-color: #1b4d7c;
+  cursor: pointer;
+  height: 70%; /* Ajusta la altura al 100% para que se extiendan verticalmente */
+  padding: 10px 20px; /* Agrega relleno para mejorar la apariencia */
+  text-align: center; /* Centra el texto horizontalmente en el botón */
+  text-decoration: none; /* Elimina la decoración de texto de los enlaces */
+  width: auto; /* Deja que el ancho sea automático para ajustarse al contenido */
+}
+
+.nav-button:hover {
+  box-shadow: #338edf 5px 5px 5px;
+  background-color: rgb(9, 33, 70);
+  cursor: pointer;
+  transition: 0.5s all;
+  color: white;
+}
+
+.nav-button:active {
+  background-color: #6b6e6f;
+  transition: none;
+}

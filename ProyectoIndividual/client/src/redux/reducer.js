@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ASCENDING, LOWER } from "./order";
+import { ASCENDING, DESCENDING, LOWER } from "./order";
 import {
   FETCH_ACTIVITY,
   GET_ACTIVITY,
@@ -79,12 +79,31 @@ export default function reducer(state = initialState, action) {
       };
 
     case FILTER_BY_POPULATION:
-      const filteredByPopulation = state.countries.filter(
-        (country) => country.population <= action.payload
-      );
+      let orderedByPopulation = [...state.filteredCountries];
+      orderedByPopulation.sort((a, b) => {
+        if (a.population < b.population) {
+          return action.payload === LOWER ? -1 : 1;
+        }
+        if (a.population > b.population) {
+          return action.payload === LOWER ? 1 : -1;
+        }
+        return 0;
+      });
       return {
         ...state,
-        filteredCountries: filteredByPopulation,
+        filteredCountries: orderedByPopulation,
+      };
+
+    case SORT:
+      let sortedCountries = [...state.filteredCountries];
+      if (action.payload === ASCENDING) {
+        sortedCountries.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (action.payload === DESCENDING) {
+        sortedCountries.sort((a, b) => b.name.localeCompare(a.name));
+      }
+      return {
+        ...state,
+        filteredCountries: sortedCountries,
       };
 
     case REMOVE_ACTIVITY:

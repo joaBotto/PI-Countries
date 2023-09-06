@@ -1,6 +1,32 @@
 .start-button {
-  background-color: black;
-  width: 200px;
-  height: 50px;
-  font-size: 2em;
+  width: 400px;
+  height: 400px;
+  background-image: url("terra.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #2268b3;
+  border: none;
+  border-radius: 50%;
+  color: #1a0770;
+  font-size: 35px;
+  font-family: "Times New Roman", Times, serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: rotateHorizontal 3s linear infinite;
+}
+
+@keyframes rotateHorizontal {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }

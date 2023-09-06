@@ -1,0 +1,35 @@
+.pagination {
+  display: inline;
+  margin: auto;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.page-item {
+  background-color: #b3b9e4;
+  height: 35px;
+  display: inline-block;
+  padding: 1.5px;
+  margin: 2px;
+  border-radius: 4px;
+}
+
+.page-a {
+  display: inline-block;
+  padding: 5px 8px;
+  text-decoration: none;
+  background-color: #050b30;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.page-a:hover {
+  background-color: #1b4d7c;
+  box-shadow: 5px 6px 5px #1b6d7c;
+  transition: all 0.5s;
+}
+
+.active a {
+  background-color: #1fb897;
+  color: #fff;
+}

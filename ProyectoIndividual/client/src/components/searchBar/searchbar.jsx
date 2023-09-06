@@ -1,11 +1,24 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-const SearchBar = () => {
+
+export default function SearchBar() {
+  const [id, setId] = useState("");
+  function handleChange(event) {
+    setId(event.target.value);
+  }
   return (
     <>
-      <h1>Estamos en la searchbar</h1>
+      <div className="searchCointainer">
+        <input
+          type="search"
+          className="searchInput"
+          value={id}
+          onChange={handleChange}
+          placeholder="Country"
+        />
+        <button className="buttonSend" onClick={() => onSearch(id)}>
+          Find
+        </button>
+      </div>
     </>
   );
-};
-
-export default SearchBar;
+}
