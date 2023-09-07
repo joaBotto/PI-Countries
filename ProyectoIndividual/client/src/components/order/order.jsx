@@ -33,6 +33,7 @@ export default function Order() {
         onChange={onSelectChange}
         className="select-alphabetic"
       >
+        <option value={ASCENDING}>Alphabetic order</option>
         <option value={ASCENDING}>Ascending</option>
         <option value={DESCENDING}>Descending</option>
       </select>

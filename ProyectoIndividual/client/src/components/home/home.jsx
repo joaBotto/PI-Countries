@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { getCountry } from "../../redux/actions";
 import Order from "../order/order";
 import { Link } from "react-router-dom";
+import SearchBar from "../searchBar/searchbar";
 
 const Home = () => {
   const allCountries = useSelector((state) => state.filteredCountries);
@@ -53,7 +54,12 @@ const Home = () => {
   };
   return (
     <>
-      <h1 className="title">Welcome to the world countries...</h1>
+      <h1 className="title">
+        Welcome to the world countries...
+        <input placeholder="Search your country" className="searchBar"></input>
+        <button className="buttonOut">Search</button>
+      </h1>
+
       <Order />
       <div className="countryCards">
         {currentCountries.map((country) => (

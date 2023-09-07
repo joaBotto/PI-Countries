@@ -19,11 +19,8 @@ export default function Detail() {
     console.log(country);
   }, [id]);
   return (
-    <div>
-      <Link to="/home">
-        <button>Back to home</button>
-      </Link>
-      <h1>{country.name}</h1>
+    <div className="detailBig">
+      <h1 className="name">{country.name}</h1>
       <img src={country.image} alt="flag" />
       <h3>Country id: {id}</h3>
       <h3>Continent: {country.continent}</h3>
@@ -31,6 +28,9 @@ export default function Detail() {
       <h3>Sub Region: {country.subregion}</h3>
       <h3>Population: {country.population}</h3>
       <h3>Area: {country.area}km²</h3>
+      <Link to="/home">
+        <button>Back to home</button>
+      </Link>
     </div>
   );
 }

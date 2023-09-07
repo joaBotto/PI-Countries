@@ -35,12 +35,28 @@ p {
   font-size: 40px;
   font-family: "Courier New", Courier, monospace;
   border-radius: 10px;
-  margin: auto;
   opacity: 80%;
   height: 50px;
-  margin-top: 20px;
+  display: flex;
+  justify-content: left;
+  margin-top: 5px;
 }
-
+.searchBar {
+  background-color: #2034b8;
+  width: 10%;
+  height: 25px;
+  margin-top: 6px;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.searchBar:hover {
+  background-color: #1b4d7c;
+  transition: all 0.5s;
+  box-shadow: 5px 6px 5px #1b6d7c;
+}
 .countryCard h2 {
   font-size: 1rem;
 }
@@ -64,15 +80,17 @@ p {
 }
 .buttonOut {
   background-color: #1e2a38;
-  width: 10%;
-  height: 40px;
-  margin: 5px;
+  width: 5%;
+  height: 30px;
+  margin-top: 7.5px;
   color: white;
-  padding: 8px;
+  padding: 5px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 .buttonOut:hover {
-  background-color: #050b30;
+  background-color: #1b4d7c;
+  box-shadow: 5px 6px 5px #1b6d7c;
+  transition: 0.5s;
 }
