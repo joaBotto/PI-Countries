@@ -65,6 +65,25 @@ router.get("/countries", async (req, res) => {
   }
 });
 
+router.get("/countries/name", async (req, res, next) => {
+  try {
+    const { name } = req.query;
+    const countries = await Country.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${name}%`,
+        },
+      },
+      include: { model: Activity, Country },
+    });
+    if (countries.length === 0) {
+      return res.status(404).json({ message: "No countries found" });
+    }
+    return res.status(200).json(countries);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 router.get("/countries/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -77,26 +96,6 @@ router.get("/countries/:id", async (req, res, next) => {
     if (country) {
       return res.status(200).json(country);
     }
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-});
-
-router.get("/countries/name", async (req, res, next) => {
-  try {
-    const { name } = req.query;
-    const countries = await Country.findAll({
-      where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
-        },
-      },
-      include: { model: Activity },
-    });
-    if (countries.length === 0) {
-      return res.status(404).json({ message: "No countries found" });
-    }
-    return res.status(200).json(countries);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

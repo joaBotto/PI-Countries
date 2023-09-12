@@ -1,0 +1,73 @@
+.form {
+  width: 1000px;
+  height: 250px;
+  margin-top: 15px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(87, 38, 38, 0.2);
+  background-color: #050b30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 85%;
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+  transition: all 0.3s ease;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin: 10px;
+}
+.back {
+  background-color: #050b30;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.back:hover {
+  box-shadow: #0b186b 5px 5px;
+  transition: all 0.2s;
+}
+
+.buttonCreate {
+  background-color: #2699b6;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+}
+.buttonCreate:hover {
+  box-shadow: #0b186b 5px 5px;
+  transition: all 0.2s;
+}
+.selectCountry {
+  width: 150px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[disabled] {
+  background-color: #a05555;
+  cursor: not-allowed;
+}
+.countrySelected {
+  width: 100px;
+  margin: 10px;
+  height: 40px;
+  background-color: #969bb9;
+}
+
+.x {
+  background-color: #969bb9;
+  cursor: pointer;
+  margin: 10px;
+  margin-top: -15px;
+}

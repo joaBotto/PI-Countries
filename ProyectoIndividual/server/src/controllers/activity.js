@@ -25,19 +25,11 @@ router.get("/activities", async (_req, res, next) => {
 router.post("/activities", async (req, res, next) => {
   //Luego creamos una ruta 'post' que funcionara para crear nuevas actividades turisticas
   try {
-    const {
-      name,
-      physicalDifficulty,
-      technicalDifficulty,
-      duration,
-      season,
-      countryId,
-    } = req.body;
+    const { name, difficulty, duration, season, countryId } = req.body;
     const newActivity = await Activity.create({
       //Se crea una nueva ctividad turistica en la base de datos
       name,
-      physicalDifficulty,
-      technicalDifficulty,
+      difficulty,
       duration,
       season,
     });

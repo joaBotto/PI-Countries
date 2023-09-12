@@ -31,12 +31,9 @@ export default function reducer(state = initialState, action) {
 
     // En el segundo caso, lo que hacemos es filtrar los paises segun la busqueda que se quiera realizar. Cabe destacar que el nombre del pais se puede escribir en minusculas. Tambien se actualiza el estado con los paises filtrados.
     case SEARCH_COUNTRY:
-      const filteredCountries = state.countries.filter((country) =>
-        country.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
       return {
         ...state,
-        filteredCountries,
+        filteredCountries: action.payload,
       };
 
     // En el tercer caso, filtramos los paises segun el continente al cual pertenezcan, tambien actualizamos el estado con los paises filtrados.

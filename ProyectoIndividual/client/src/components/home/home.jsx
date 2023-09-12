@@ -12,24 +12,33 @@ const Home = () => {
   const allCountries = useSelector((state) => state.filteredCountries);
   // utilizamos el useSelector para traernos el estado de filteredCountries del store global de redux y lo asignamos a la variable 'allCountries'.
 
+  const activities = useSelector((state) => state.activities);
+
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   // creamos un estado local llamado 'currentPage' que hara referencia a la pagina actual en la que nos encontramos, iniciamos en la primera (1).
 
   const [selectedContinent, setSelectedContinent] = useState(""); // Estado para el filtro de continente
   const [selectedActivity, setSelectedActivity] = useState(""); // Estado para el filtro de actividad
-  const handleContinentChange = (event) => {
-    setSelectedContinent(event.target.value);
-  };
-  const handleActivityChange = (event) => {
-    setSelectedActivity(event.target.value);
-  };
+  const [countriesWActivity, setCountriesWActivity] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState({});
 
   const [countriesPerPage] = useState(10);
 
   useEffect(() => {
     dispatch(getCountry());
   }, [dispatch, selectedContinent, selectedActivity]);
+
+  useEffect(() => {
+    if (selectedActivity) {
+      const filtered = allCountries.filter((country) =>
+        country.activities.includes(selectedActivity)
+      );
+      setCountriesWActivity(filtered);
+    } else {
+      setCountriesWActivity(allCountries);
+    }
+  }, [allCountries, selectedActivity]);
 
   const filteredCountries = allCountries.filter((country) => {
     if (selectedContinent && country.continent !== selectedContinent) {
@@ -56,8 +65,10 @@ const Home = () => {
     <>
       <h1 className="title">
         Welcome to the world countries...
-        <input placeholder="Search your country" className="searchBar"></input>
-        <button className="buttonOut">Search</button>
+        <SearchBar setSelectedCountry={setSelectedCountry} />
+        <Link to="/form">
+          <button className="buttonAct">Create activity</button>
+        </Link>
       </h1>
 
       <Order />

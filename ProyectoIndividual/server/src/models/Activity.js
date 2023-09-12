@@ -3,7 +3,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   const Activity = sequelize.define("Activity", {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
@@ -23,7 +24,7 @@ module.exports = (sequelize) => {
       type: DataTypes.DECIMAL,
     },
     season: {
-      type: DataTypes.ENUM("Verano", "Otoño", "Primavera", "Invierno"),
+      type: DataTypes.ENUM("Summer", "Autumn", "Spring", "Winter"),
     },
   });
   return Activity;

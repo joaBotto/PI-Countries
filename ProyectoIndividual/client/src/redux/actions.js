@@ -24,9 +24,10 @@ export const getCountry = () => async (dispatch) => {
   }
 };
 
-export const searchCountry = () => async (search) => {
+export const searchCountry = (search) => async (dispatch) => {
   try {
-    const response = await axios.get(`${URLc}?name=` + search);
+    const response = await axios.get(`${URLc}/name?name=${search}`);
+    console.log(response.data);
     dispatch({
       type: SEARCH_COUNTRY,
       payload: response.data,
@@ -61,7 +62,7 @@ export const getActivity = () => {
 };
 
 export const postActivity = (payload) => {
-  async (dispatch) => {
+  return async (dispatch) => {
     try {
       const response = await axios.post(URLa, payload);
       dispatch({
@@ -85,7 +86,7 @@ export const filterByActivity = (payload) => ({
 });
 
 export const fetchActivity = () => {
-  async (dispatch) => {
+  return async (dispatch) => {
     try {
       const response = await axios.get(URLa);
       dispatch({

@@ -1,24 +1,47 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchCountry } from "../../redux/actions";
+import "./searchbar.css";
+export default function SearchBar({ setSelectedCountry }) {
+  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const allCountries = useSelector((state) => state.countries);
 
-export default function SearchBar() {
-  const [id, setId] = useState("");
-  function handleChange(event) {
-    setId(event.target.value);
-  }
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (search.trim() === "") {
+      alert("You must type something");
+      return;
+    }
+    const toSearch = search.toLowerCase();
+    const validate = allCountries.filter((e) =>
+      e.name.toLowerCase().includes(toSearch)
+    );
+    if (validate.length < 1) {
+      return alert("The country does not exist");
+    } else {
+      await dispatch(searchCountry(search));
+      setSelectedCountry(validate[0]);
+    }
+    setSearch("");
+  };
+  const onInputChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
   return (
-    <>
-      <div className="searchCointainer">
+    <div>
+      <form onSubmit={onSubmit}>
         <input
-          type="search"
-          className="searchInput"
-          value={id}
-          onChange={handleChange}
-          placeholder="Country"
+          type="text"
+          placeholder="Enter country name"
+          onChange={onInputChange}
+          value={search}
+          className="searchBar"
         />
-        <button className="buttonSend" onClick={() => onSearch(id)}>
-          Find
-        </button>
-      </div>
-    </>
+        <input type="submit" value="Search" className="buttonOut" />
+      </form>
+    </div>
   );
 }

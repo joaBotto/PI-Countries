@@ -11,19 +11,31 @@ export default function Order() {
   const dispatch = useDispatch();
 
   function onSelectChange(event) {
-    dispatch(sort(event.target.value));
+    const selectedValue = event.target.value;
+    if (selectedValue === "Ascending") {
+      dispatch(sort(ASCENDING));
+    } else if (selectedValue === "Descending") {
+      dispatch(sort(DESCENDING));
+    }
   }
 
-  function handleFilterContinent(event) {
-    dispatch(filterByContinent(event.target.value));
+  function handleFilterContinent(e) {
+    const selectedValue = e.target.value;
+    dispatch(filterByContinent(selectedValue));
   }
 
-  function handleFilterActivity(event) {
-    dispatch(filterByActivity(event.target.value));
+  function handleFilterActivity(e) {
+    const selectedValue = e.target.value;
+    dispatch(filterByActivity(selectedValue));
   }
 
   function handleFilterPopulation(event) {
-    dispatch(filterByPopulation(event.target.value));
+    const selectedValue = event.target.value;
+    if (selectedValue === "Highest") {
+      dispatch(filterByPopulation(HIGHEST));
+    } else if (selectedValue === "Lowest") {
+      dispatch(filterByPopulation(LOWER));
+    }
   }
 
   return (
@@ -33,9 +45,9 @@ export default function Order() {
         onChange={onSelectChange}
         className="select-alphabetic"
       >
-        <option value={ASCENDING}>Alphabetic order</option>
-        <option value={ASCENDING}>Ascending</option>
-        <option value={DESCENDING}>Descending</option>
+        <option>Alphabetic order</option>
+        <option value="Ascending">Ascending</option>
+        <option value="Descending">Descending</option>
       </select>
       <select
         className="select-alphabetic"
@@ -43,8 +55,8 @@ export default function Order() {
         onChange={handleFilterPopulation}
       >
         <option value="Select population amount order">Population order</option>
-        <option value={HIGHEST}>Highest</option>
-        <option value={LOWER}>Lowest</option>
+        <option value="Highest">Highest</option>
+        <option value="Lowest">Lowest</option>
       </select>
       <select
         name="select"

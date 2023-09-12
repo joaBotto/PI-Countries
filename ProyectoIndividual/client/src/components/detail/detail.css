@@ -1,14 +1,33 @@
 .detailBig {
-  width: 700px;
-  height: 700px;
-  margin: 5px;
+  width: 500px;
+  height: 570px;
+  margin-top: -20px;
   border: 2px solid #ccc;
   border-radius: 20px;
   box-shadow: 10px 10px 10px rgba(87, 38, 38, 0.2);
   background-color: #050b30;
   opacity: 85%;
+  font-size: 0.7rem;
   font-family: "Courier New", Courier, monospace;
+  transition: all 0.3s ease;
 }
-img {
+
+h3 {
+  font-size: 15px;
+}
+
+.flagDetail {
   width: 50%;
+  height: 30%;
+  opacity: 100%;
+}
+
+.buttonBack {
+  background-color: #050b30;
+  border-radius: 5px;
+}
+.buttonBack:hover {
+  background-color: #1b4d7c;
+  transition: all 0.5s;
+  box-shadow: 5px 6px 5px #1b6d7c;
 }
